@@ -1,11 +1,15 @@
 ﻿List<Cliente> clientes = new List<Cliente>();
 List<Limpeza> limpezas = new List<Limpeza>();
 
-Menu.Exibir(clientes, limpezas);
+Cliente gerenciadorClientes = new Cliente("", "");
+Limpeza gerenciadorLimpezas = new Limpeza(DateTime.Now, "", null);
+
+Menu menu = new Menu();
+menu.Exibir(clientes, limpezas, gerenciadorClientes, gerenciadorLimpezas);
 
 class Menu
 {
-    public static void Exibir(List<Cliente> clientes, List<Limpeza> limpezas)
+    public void Exibir(List<Cliente> clientes, List<Limpeza> limpezas, Cliente cliente, Limpeza limpeza)
     {
         while (true)
         {
@@ -35,16 +39,16 @@ class Menu
             switch (opcao)
             {
                 case 1:
-                    Cliente.CadastrarCliente(clientes);
+                    cliente.CadastrarCliente(clientes);
                     break;
                 case 2:
-                    Cliente.ListarClientes(clientes);
+                    cliente.ListarClientes(clientes);
                     break;
                 case 3:
-                    Limpeza.RegistrarLimpeza(limpezas, clientes);
+                    limpeza.RegistrarLimpeza(limpezas, clientes, cliente);
                     break;
                 case 4:
-                    Limpeza.ListarLimpezas(limpezas);
+                    limpeza.ListarLimpezas(limpezas);
                     break;
                 case 0:
                     Console.WriteLine("Saindo...");
@@ -69,7 +73,7 @@ class Cliente
     }
 
 
-    public static void CadastrarCliente(List<Cliente> clientes)
+    public void CadastrarCliente(List<Cliente> clientes)
     {
         Console.Write("Digite o nome: ");
         string nome = Console.ReadLine();
@@ -84,7 +88,7 @@ class Cliente
         Console.WriteLine("Cliente Cadastrado");
     }
 
-    public static void ListarClientes(List<Cliente> clientes)
+    public void ListarClientes(List<Cliente> clientes)
     {
         int number = 0;
         foreach (var cliente in clientes)
@@ -109,10 +113,10 @@ class Limpeza
         Cliente = cliente;
     }
 
-    public static void RegistrarLimpeza(List<Limpeza> limpezas, List<Cliente> clientes)
+    public void RegistrarLimpeza(List<Limpeza> limpezas, List<Cliente> clientes, Cliente cli)
     {
         //Escolha de cliente
-        Cliente.ListarClientes(clientes);
+        cli.ListarClientes(clientes);
         Console.Write("Escolha o cliente pelo número: ");
         int escolha = int.Parse(Console.ReadLine());
 
@@ -139,7 +143,7 @@ class Limpeza
         Thread.Sleep(1000);
     }
 
-    public static void ListarLimpezas(List<Limpeza> limpezas)
+    public void ListarLimpezas(List<Limpeza> limpezas)
     {
         foreach (var limpeza in limpezas)
         {
