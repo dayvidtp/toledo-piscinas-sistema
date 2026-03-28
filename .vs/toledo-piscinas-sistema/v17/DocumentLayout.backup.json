@@ -5,6 +5,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{2EE71319-6379-4CC7-A47E-D72BE356D9E3}|toledo-piscinas-sistema.csproj|c:\\users\\dayvi\\source\\repos\\toledo-piscinas-sistema\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2EE71319-6379-4CC7-A47E-D72BE356D9E3}|toledo-piscinas-sistema.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EE71319-6379-4CC7-A47E-D72BE356D9E3}|toledo-piscinas-sistema.csproj|c:\\users\\dayvi\\source\\repos\\toledo-piscinas-sistema\\services\\menuservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EE71319-6379-4CC7-A47E-D72BE356D9E3}|toledo-piscinas-sistema.csproj|solutionrelative:services\\menuservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EE71319-6379-4CC7-A47E-D72BE356D9E3}|toledo-piscinas-sistema.csproj|c:\\users\\dayvi\\source\\repos\\toledo-piscinas-sistema\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EE71319-6379-4CC7-A47E-D72BE356D9E3}|toledo-piscinas-sistema.csproj|solutionrelative:models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +22,38 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MenuService.cs",
+              "DocumentMoniker": "C:\\Users\\dayvi\\source\\repos\\toledo-piscinas-sistema\\Services\\MenuService.cs",
+              "RelativeDocumentMoniker": "Services\\MenuService.cs",
+              "ToolTip": "C:\\Users\\dayvi\\source\\repos\\toledo-piscinas-sistema\\Services\\MenuService.cs",
+              "RelativeToolTip": "Services\\MenuService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-28T15:27:46.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\dayvi\\source\\repos\\toledo-piscinas-sistema\\Models\\Cliente.cs",
+              "RelativeDocumentMoniker": "Models\\Cliente.cs",
+              "ToolTip": "C:\\Users\\dayvi\\source\\repos\\toledo-piscinas-sistema\\Models\\Cliente.cs",
+              "RelativeToolTip": "Models\\Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-28T15:18:05.082Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +62,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\dayvi\\source\\repos\\toledo-piscinas-sistema\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAA5wCsAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA4AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-28T12:45:30.042Z",
               "EditorCaption": ""
