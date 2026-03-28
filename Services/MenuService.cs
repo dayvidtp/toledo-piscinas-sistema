@@ -4,7 +4,7 @@ namespace toledo_piscinas_sistema.Services
 {
     class MenuService
     {
-        public void Exibir(List<Cliente> clientes, List<Limpeza> limpezas, ClienteService cliente, Limpeza limpeza)
+        public void Exibir(List<Cliente> clientes, List<Limpeza> limpezas, ClienteService cliente, LimpezaService limpeza)
         {
             while (true)
             {

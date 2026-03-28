@@ -25,8 +25,7 @@ namespace toledo_piscinas_sistema.Services
             foreach (var cliente in clientes)
             {
                 number++;
-                Console.WriteLine($"{number} - Nome: " +
-                    $"{cliente.Nome} | Telefone: {cliente.Telefone}");
+                Console.WriteLine($"{number} - Nome: {cliente.Nome} | Telefone: {cliente.Telefone}");
             }
         }
     }
