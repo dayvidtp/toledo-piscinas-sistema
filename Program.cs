@@ -1,53 +1,60 @@
 ﻿List<Cliente> clientes = new List<Cliente>();
 List<Limpeza> limpezas = new List<Limpeza>();
 
+Menu.Exibir(clientes, limpezas);
 
-while (true)
+class Menu
 {
-    Console.WriteLine("Pressione qualquer tecla para continuar...");
-    Console.ReadKey();
-    Console.Clear();
-
-    Console.WriteLine("Bem vindo ao Toledo Piscinas!");
-    Console.WriteLine("");
-    Console.WriteLine("Escolha uma das opções abaixo: ");
-    Console.WriteLine("");
-    Console.WriteLine("1 - Cadastrar Cliente");
-    Console.WriteLine("2 - Listar Clientes");
-    Console.WriteLine("3 - Registrar Limpeza");
-    Console.WriteLine("4 - Listar Limpezas");
-    Console.WriteLine("0 - Sair");
-    Console.WriteLine("");
-    Console.Write("Digite o número correspodente à escolha: ");
-
-    //Validação do ReadLine();
-    if (!int.TryParse(Console.ReadLine(), out int opcao))
+    public static void Exibir(List<Cliente> clientes, List<Limpeza> limpezas)
     {
-        Console.WriteLine("Digite um número válido!");
-        continue;
-    }
+        while (true)
+        {
+            Console.WriteLine("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
+            Console.Clear();
 
-    switch (opcao)
-    {
-        case 1:
-            Cliente.CadastrarCliente(clientes);
-            break;
-        case 2:
-            Cliente.ListarClientes(clientes);
-            break;
-        case 3:
-            Limpeza.RegistrarLimpeza(limpezas, clientes);
-            break;
-        case 4:
-            Limpeza.ListarLimpezas(limpezas);
-            break;
-        case 0:
-            Console.WriteLine("Saindo...");
-            Thread.Sleep(1000);
-            return;
-        default:
-            Console.WriteLine("Número Inválido");
-            break;
+            Console.WriteLine("Bem vindo ao Toledo Piscinas!");
+            Console.WriteLine("");
+            Console.WriteLine("Escolha uma das opções abaixo: ");
+            Console.WriteLine("");
+            Console.WriteLine("1 - Cadastrar Cliente");
+            Console.WriteLine("2 - Listar Clientes");
+            Console.WriteLine("3 - Registrar Limpeza");
+            Console.WriteLine("4 - Listar Limpezas");
+            Console.WriteLine("0 - Sair");
+            Console.WriteLine("");
+            Console.Write("Digite o número correspodente à escolha: ");
+
+            //Validação do ReadLine();
+            if (!int.TryParse(Console.ReadLine(), out int opcao))
+            {
+                Console.WriteLine("Digite um número válido!");
+                continue;
+            }
+
+            switch (opcao)
+            {
+                case 1:
+                    Cliente.CadastrarCliente(clientes);
+                    break;
+                case 2:
+                    Cliente.ListarClientes(clientes);
+                    break;
+                case 3:
+                    Limpeza.RegistrarLimpeza(limpezas, clientes);
+                    break;
+                case 4:
+                    Limpeza.ListarLimpezas(limpezas);
+                    break;
+                case 0:
+                    Console.WriteLine("Saindo...");
+                    Thread.Sleep(1000);
+                    return;
+                default:
+                    Console.WriteLine("Número Inválido");
+                    break;
+            }
+        }
     }
 }
 class Cliente
@@ -60,6 +67,8 @@ class Cliente
         Nome = nome;
         Telefone = telefone;
     }
+
+
     public static void CadastrarCliente(List<Cliente> clientes)
     {
         Console.Write("Digite o nome: ");
@@ -68,7 +77,9 @@ class Cliente
         Console.Write("Digite o Telefone: ");
         string telefone = (Console.ReadLine());
 
-        clientes.Add(new Cliente(nome, telefone));
+        Cliente cliente1 = new Cliente(nome, telefone);
+
+        clientes.Add(cliente1);
 
         Console.WriteLine("Cliente Cadastrado");
     }
@@ -84,7 +95,6 @@ class Cliente
         }
     }
 }
-
 class Limpeza
 {
     public DateTime Data { get; set; }
