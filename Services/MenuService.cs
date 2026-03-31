@@ -7,6 +7,7 @@ namespace toledo_piscinas_sistema.Services
     {
         ConsoleUI consoleUI = new ConsoleUI();
         ClienteService clienteService = new ClienteService();
+        LimpezaService limpezaService = new LimpezaService();
 
         public void Exibir(List<Cliente> clientes, List<Limpeza> limpezas, ClienteService clienteService, LimpezaService limpezaService)
         {
@@ -31,10 +32,11 @@ namespace toledo_piscinas_sistema.Services
                     break;
                 case 3:
                     consoleUI.MostrarClientes(clientes);
-                    limpezaService.RegistrarLimpeza(limpezas, clientes);
+                    Limpeza limpeza = consoleUI.ObterDadosLimpeza(clientes);
+                    limpezaService.RegistrarLimpeza(limpezas, clientes, limpeza);
                     break;
                 case 4:
-                    limpezaService.ListarLimpezas(limpezas);
+                    consoleUI.MostrarLimpezas(limpezas);
                     break;
                 case 0:
                     Console.WriteLine("Saindo...");

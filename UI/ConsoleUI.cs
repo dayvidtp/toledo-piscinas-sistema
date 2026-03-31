@@ -10,7 +10,7 @@ namespace toledo_piscinas_sistema.UI
 {
     public class ConsoleUI
     {
-        public void consoleMenu()
+        public void MostrarMenu()
         {
 
             Console.WriteLine("Bem vindo ao Toledo Piscinas!");
@@ -40,10 +40,45 @@ namespace toledo_piscinas_sistema.UI
         public void MostrarClientes(List<Cliente> clientes)
         {
             int i = 1;
-                        foreach (var cliente in clientes)
+            foreach (var cliente in clientes)
             {
                 Console.WriteLine($"{i} - Nome: {cliente.Nome} | Telefone: {cliente.Telefone}");
                 i++;
+            }
+        }
+
+        public Limpeza ObterDadosLimpeza(List<Cliente> clientes)
+        {
+            Console.Write("Escolha o cliente pelo número: ");
+            int escolha = int.Parse(Console.ReadLine());
+
+            Cliente clienteSelecionado = clientes[escolha - 1];
+
+            if (escolha > 0 && escolha <= clientes.Count)
+            {
+                clienteSelecionado = clientes[escolha - 1];
+            }
+            else
+            {
+                Console.WriteLine("Cliente inválido!");
+            }
+
+            Console.Write("Descrição da limpeza: ");
+            string descricao = Console.ReadLine();
+
+            return new Limpeza(DateTime.Now, descricao, clienteSelecionado);
+        }
+
+        public void MostrarLimpezas(List<Limpeza> limpezas)
+        {
+            foreach (var limpeza in limpezas)
+            {
+                if (limpezas.Count == 0)
+                {
+                    Console.WriteLine("Nenhuma limpeza registrada.");
+                    return;
+                }
+                Console.WriteLine($"Cliente: {limpeza.Cliente.Nome} | Data: {limpeza.Data:dd/MM/yyyy HH:mm} | {limpeza.Descricao}");
             }
         }
     }

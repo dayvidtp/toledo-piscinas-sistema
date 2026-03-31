@@ -13,7 +13,7 @@ ConsoleUI consoleUI = new ConsoleUI();
 
 while (true)
 {
-    consoleUI.consoleMenu();
+    consoleUI.MostrarMenu();
     menu.Exibir(clientes, limpezas, gerenciadorClientes, gerenciadorLimpezas);
 }
 
