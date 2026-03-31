@@ -1,6 +1,6 @@
 ﻿namespace toledo_piscinas_sistema.Models;
 
-class Cliente
+public class Cliente
 {
     public string Nome { get; set; }
     public string Telefone { get; set; }

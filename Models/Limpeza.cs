@@ -1,6 +1,6 @@
 ﻿namespace toledo_piscinas_sistema.Models
 {
-    class Limpeza
+    public class Limpeza
     {
         public DateTime Data { get; set; }
         public string Descricao { get; set; }

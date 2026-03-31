@@ -2,14 +2,18 @@
 
 namespace toledo_piscinas_sistema.Services
 {
-    class LimpezaService
+    public class LimpezaService
     {
-        public void RegistrarLimpeza(List<Limpeza> limpezas, List<Cliente> clientes, ClienteService cli)
+        public void RegistrarLimpeza(List<Limpeza> limpezas, List<Cliente> clientes)
         {
             //Escolha de cliente
-            cli.ListarClientes(clientes);
             Console.Write("Escolha o cliente pelo número: ");
-            int escolha = int.Parse(Console.ReadLine());
+
+            if (!int.TryParse(Console.ReadLine(), out int escolha))
+            {
+                Console.WriteLine("Entrada inválida! Por favor, insira um número.");
+                return;
+            }
 
             Cliente clienteSelecionado;
 
@@ -40,6 +44,11 @@ namespace toledo_piscinas_sistema.Services
         {
             foreach (var limpeza in limpezas)
             {
+                if (limpezas.Count == 0)
+                {
+                    Console.WriteLine("Nenhuma limpeza registrada.");
+                    return;
+                }
                 Console.WriteLine($"Cliente: {limpeza.Cliente.Nome} | Data: {limpeza.Data:dd/MM/yyyy HH:mm} | {limpeza.Descricao}");
             }
         }

@@ -1,59 +1,51 @@
 ﻿using toledo_piscinas_sistema.Models;
+using toledo_piscinas_sistema.UI;
 
 namespace toledo_piscinas_sistema.Services
 {
-    class MenuService
+    public class MenuService
     {
-        public void Exibir(List<Cliente> clientes, List<Limpeza> limpezas, ClienteService cliente, LimpezaService limpeza)
+        ConsoleUI consoleUI = new ConsoleUI();
+        ClienteService clienteService = new ClienteService();
+
+        public void Exibir(List<Cliente> clientes, List<Limpeza> limpezas, ClienteService clienteService, LimpezaService limpezaService)
         {
-            while (true)
+            //Validação do ReadLine();
+            if (!int.TryParse(Console.ReadLine(), out int opcao))
             {
-                Console.WriteLine("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
+                Console.WriteLine("Digite um número válido!");
+                Thread.Sleep(1000);
                 Console.Clear();
-
-                Console.WriteLine("Bem vindo ao Toledo Piscinas!");
-                Console.WriteLine("");
-                Console.WriteLine("Escolha uma das opções abaixo: ");
-                Console.WriteLine("");
-                Console.WriteLine("1 - Cadastrar Cliente");
-                Console.WriteLine("2 - Listar Clientes");
-                Console.WriteLine("3 - Registrar Limpeza");
-                Console.WriteLine("4 - Listar Limpezas");
-                Console.WriteLine("0 - Sair");
-                Console.WriteLine("");
-                Console.Write("Digite o número correspodente à escolha: ");
-
-                //Validação do ReadLine();
-                if (!int.TryParse(Console.ReadLine(), out int opcao))
-                {
-                    Console.WriteLine("Digite um número válido!");
-                    continue;
-                }
-
-                switch (opcao)
-                {
-                    case 1:
-                        cliente.CadastrarCliente(clientes);
-                        break;
-                    case 2:
-                        cliente.ListarClientes(clientes);
-                        break;
-                    case 3:
-                        limpeza.RegistrarLimpeza(limpezas, clientes, cliente);
-                        break;
-                    case 4:
-                        limpeza.ListarLimpezas(limpezas);
-                        break;
-                    case 0:
-                        Console.WriteLine("Saindo...");
-                        Thread.Sleep(1000);
-                        return;
-                    default:
-                        Console.WriteLine("Número Inválido");
-                        break;
-                }
+                return;
             }
+
+            switch (opcao)
+            {
+                case 1:
+                    Cliente cliente = consoleUI.ObterDadosCliente();
+                    clienteService.AdicionarCliente(clientes, cliente);
+                    Console.WriteLine("Cliente Adicionado com Sucesso!");
+                    break;
+                case 2:
+                    consoleUI.MostrarClientes(clientes);
+                    break;
+                case 3:
+                    consoleUI.MostrarClientes(clientes);
+                    limpezaService.RegistrarLimpeza(limpezas, clientes);
+                    break;
+                case 4:
+                    limpezaService.ListarLimpezas(limpezas);
+                    break;
+                case 0:
+                    Console.WriteLine("Saindo...");
+                    break;
+                default:
+                    Console.WriteLine("Número Inválido");
+                    break;
+            }
+            Thread.Sleep(1000);
+            Console.Clear();
+
         }
     }
 }
