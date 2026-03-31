@@ -9,7 +9,7 @@ namespace toledo_piscinas_sistema.Services
             return new Limpeza(data, descricao, cliente);
         }
 
-        public void RegistrarLimpeza(List<Limpeza> limpezas, List<Cliente> clientes, Limpeza novaLimpeza)
+        public void RegistrarLimpeza(List<Limpeza> limpezas, Limpeza novaLimpeza)
         {
             limpezas.Add(novaLimpeza);
         }

@@ -26,7 +26,7 @@ namespace toledo_piscinas_sistema.UI
             Console.Write("Digite o número correspodente à escolha: ");
         }
 
-        public Cliente ObterDadosCliente()
+        public (string nome, string telefone) ObterDadosCliente()
         {
             Console.Write("Digite o nome do Cliente: ");
             string nome = Console.ReadLine();
@@ -34,7 +34,7 @@ namespace toledo_piscinas_sistema.UI
             Console.Write("Digite o Telefone: ");
             string telefone = (Console.ReadLine());
 
-            return new Cliente(nome, telefone);
+            return (nome, telefone);
         }
 
         public void MostrarClientes(List<Cliente> clientes)
@@ -47,7 +47,7 @@ namespace toledo_piscinas_sistema.UI
             }
         }
 
-        public Limpeza ObterDadosLimpeza(List<Cliente> clientes)
+        public (string descricao, Cliente cliente) ObterDadosLimpeza(List<Cliente> clientes)
         {
             Console.Write("Escolha o cliente pelo número: ");
             int escolha = int.Parse(Console.ReadLine());
@@ -66,7 +66,7 @@ namespace toledo_piscinas_sistema.UI
             Console.Write("Descrição da limpeza: ");
             string descricao = Console.ReadLine();
 
-            return new Limpeza(DateTime.Now, descricao, clienteSelecionado);
+            return (descricao, clienteSelecionado);
         }
 
         public void MostrarLimpezas(List<Limpeza> limpezas)

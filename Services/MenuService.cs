@@ -23,7 +23,10 @@ namespace toledo_piscinas_sistema.Services
             switch (opcao)
             {
                 case 1:
-                    Cliente cliente = consoleUI.ObterDadosCliente();
+                    var dadosCliente = consoleUI.ObterDadosCliente();
+
+                    Cliente cliente = clienteService.CriarCliente(dadosCliente.nome, dadosCliente.telefone);
+
                     clienteService.AdicionarCliente(clientes, cliente);
                     Console.WriteLine("Cliente Adicionado com Sucesso!");
                     break;
@@ -32,8 +35,11 @@ namespace toledo_piscinas_sistema.Services
                     break;
                 case 3:
                     consoleUI.MostrarClientes(clientes);
-                    Limpeza limpeza = consoleUI.ObterDadosLimpeza(clientes);
-                    limpezaService.RegistrarLimpeza(limpezas, clientes, limpeza);
+                    var dadosLimpeza = consoleUI.ObterDadosLimpeza(clientes);
+
+                    Limpeza limpeza = limpezaService.CriarLimpeza(DateTime.Now, dadosLimpeza.descricao, dadosLimpeza.cliente);
+
+                    limpezaService.RegistrarLimpeza(limpezas, limpeza);
                     break;
                 case 4:
                     consoleUI.MostrarLimpezas(limpezas);
