@@ -1,4 +1,5 @@
 ﻿using toledo_piscinas_sistema.Models;
+using toledo_piscinas_sistema.Repository;
 using toledo_piscinas_sistema.UI;
 
 namespace toledo_piscinas_sistema.Services
@@ -8,8 +9,9 @@ namespace toledo_piscinas_sistema.Services
         ConsoleUI consoleUI = new ConsoleUI();
         ClienteService clienteService = new ClienteService();
         LimpezaService limpezaService = new LimpezaService();
+        ClienteRepository clienteRepository = new ClienteRepository(); // Adicionado campo para ClienteRepository
 
-        public void Exibir(List<Cliente> clientes, List<Limpeza> limpezas, ClienteService clienteService, LimpezaService limpezaService)
+        public void Exibir(List<Cliente> clientes, List<Limpeza> limpezas)
         {
             //Validação do ReadLine();
             if (!int.TryParse(Console.ReadLine(), out int opcao))
@@ -28,6 +30,7 @@ namespace toledo_piscinas_sistema.Services
                     Cliente cliente = clienteService.CriarCliente(dadosCliente.nome, dadosCliente.telefone);
 
                     clienteService.AdicionarCliente(clientes, cliente);
+                    clienteRepository.SalvarClientes(clientes); // Agora usa o campo corretamente
                     Console.WriteLine("Cliente Adicionado com Sucesso!");
                     break;
                 case 2:
