@@ -14,8 +14,11 @@ ClienteRepository clienteRepository = new ClienteRepository();
 MenuService menu = new MenuService();
 ConsoleUI consoleUI = new ConsoleUI();
 
+clienteRepository.CarregarClientes(clientes);
+
 while (true)
 {
+    Console.Clear();
     consoleUI.MostrarMenu();
     menu.Exibir(clientes, limpezas);
 }

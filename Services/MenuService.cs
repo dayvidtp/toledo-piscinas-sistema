@@ -9,7 +9,7 @@ namespace toledo_piscinas_sistema.Services
         ConsoleUI consoleUI = new ConsoleUI();
         ClienteService clienteService = new ClienteService();
         LimpezaService limpezaService = new LimpezaService();
-        ClienteRepository clienteRepository = new ClienteRepository(); // Adicionado campo para ClienteRepository
+        ClienteRepository clienteRepository = new ClienteRepository();
 
         public void Exibir(List<Cliente> clientes, List<Limpeza> limpezas)
         {
@@ -30,7 +30,7 @@ namespace toledo_piscinas_sistema.Services
                     Cliente cliente = clienteService.CriarCliente(dadosCliente.nome, dadosCliente.telefone);
 
                     clienteService.AdicionarCliente(clientes, cliente);
-                    clienteRepository.SalvarClientes(clientes); // Agora usa o campo corretamente
+                    clienteRepository.SalvarClientes(clientes);
                     Console.WriteLine("Cliente Adicionado com Sucesso!");
                     break;
                 case 2:
@@ -54,8 +54,7 @@ namespace toledo_piscinas_sistema.Services
                     Console.WriteLine("Número Inválido");
                     break;
             }
-            Thread.Sleep(1000);
-            Console.Clear();
+            Console.Read();
 
         }
     }
