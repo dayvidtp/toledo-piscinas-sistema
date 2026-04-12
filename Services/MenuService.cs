@@ -32,9 +32,12 @@ namespace toledo_piscinas_sistema.Services
                     clienteService.AdicionarCliente(clientes, cliente);
                     clienteRepository.SalvarClientes(clientes);
                     Console.WriteLine("Cliente Adicionado com Sucesso!");
+                    Thread.Sleep(1500);
                     break;
                 case 2:
                     consoleUI.MostrarClientes(clientes);
+                    Console.WriteLine("Pressione Enter para Retornar ao Menu...");
+                    Console.ReadLine();
                     break;
                 case 3:
                     consoleUI.MostrarClientes(clientes);
@@ -54,7 +57,7 @@ namespace toledo_piscinas_sistema.Services
                     Console.WriteLine("Número Inválido");
                     break;
             }
-            Console.Read();
+            
 
         }
     }

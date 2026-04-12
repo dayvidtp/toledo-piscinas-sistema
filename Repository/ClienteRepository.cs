@@ -35,7 +35,7 @@ namespace toledo_piscinas_sistema.Repository
             }
         }
 
-        public void CarregarClientes(List<Cliente> clientes)
+        /*public void CarregarClientes(List<Cliente> clientes)
         {
             string caminho = Path.Combine(Directory.GetCurrentDirectory(), "clientes.json");
             if (File.Exists(caminho))
@@ -47,6 +47,24 @@ namespace toledo_piscinas_sistema.Repository
                     clientes.AddRange(clientesCarregados);
                 }
             }
+        }*/
+
+        public List<Cliente> CarregarClientes()
+        {
+            //Mostra o caminho a percorrer de forma segura, garantida.
+            string caminho = Path.Combine(Directory.GetCurrentDirectory(), "clientes.json");
+
+            //Verifica se o arquivo existe antes de tentar ler. Se não existir, retorna uma lista vazia.
+            if (!File.Exists(caminho))
+            {
+                return new List<Cliente>();
+            }
+            //Lê o conteúdo do arquivo JSON.
+            string json = File.ReadAllText(caminho);
+            //Desserializa o JSON para uma lista de clientes.
+            var clientesCarregados = JsonSerializer.Deserialize<List<Cliente>>(json);
+            //Retorna a lista de clientes carregados ou uma lista vazia se a desserialização falhar.
+            return clientesCarregados ?? new List<Cliente>();
         }
 
     }
