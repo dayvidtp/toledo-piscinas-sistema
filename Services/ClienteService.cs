@@ -13,5 +13,10 @@ namespace toledo_piscinas_sistema.Services
         {
             clientes.Add(novoCliente);
         }
+
+        public void DeletarCliente(List<Cliente> clientes, Cliente cliente)
+        {
+            clientes.Remove(cliente);
+        }
     }
 }

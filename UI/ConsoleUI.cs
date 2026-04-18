@@ -21,6 +21,7 @@ namespace toledo_piscinas_sistema.UI
             Console.WriteLine("2 - Listar Clientes");
             Console.WriteLine("3 - Registrar Limpeza");
             Console.WriteLine("4 - Listar Limpezas");
+            Console.WriteLine("5 - Deletar Cliente");
             Console.WriteLine("0 - Sair");
             Console.WriteLine("");
             Console.Write("Digite o número correspodente à escolha: ");
@@ -45,6 +46,23 @@ namespace toledo_piscinas_sistema.UI
                 Console.WriteLine($"{i} - Nome: {cliente.Nome} | Telefone: {cliente.Telefone}");
                 i++;
             }
+        }
+
+        public (Cliente cliente, int escolha) ObterClienteParaDeletar(List<Cliente> clientes)
+        {
+            Console.Write("Escolha o cliente a ser deletado pelo número: ");
+            int escolha = int.Parse(Console.ReadLine());
+
+            Cliente clienteSelecionado = clientes[escolha - 1];
+            if (escolha > 0 && escolha <= clientes.Count)
+            {
+                clienteSelecionado = clientes[escolha - 1];
+            }
+            else
+            {
+                Console.WriteLine("Cliente inválido!");
+            }
+            return (clienteSelecionado, escolha);
         }
 
         public (string descricao, Cliente cliente) ObterDadosLimpeza(List<Cliente> clientes)

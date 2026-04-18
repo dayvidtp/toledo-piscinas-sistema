@@ -59,6 +59,17 @@ namespace toledo_piscinas_sistema.Services
                     Console.WriteLine("Pressione Enter para Retornar ao Menu...");
                     Console.ReadLine();
                     return true;
+                case 5: // Deletar Cliente
+                    consoleUI.MostrarClientes(clientes);
+
+                    var dadosClienteDeletar = consoleUI.ObterClienteParaDeletar(clientes);
+
+                    clienteService.DeletarCliente(clientes, dadosClienteDeletar.cliente);
+                    clienteRepository.SalvarClientes(clientes);
+
+                    Console.WriteLine("Cliente Deletado com Sucesso!");
+                    Thread.Sleep(1500);
+                    return true;
                 case 0:
                     Console.WriteLine("Saindo...");
                     Thread.Sleep(500);
