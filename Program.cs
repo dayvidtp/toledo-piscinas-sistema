@@ -7,7 +7,8 @@ using toledo_piscinas_sistema.UI;
 ClienteRepository clienteRepository = new ClienteRepository();
 List<Cliente> clientes = clienteRepository.CarregarClientes();
 
-List<Limpeza> limpezas = new List<Limpeza>();
+LimpezaRepository limpezaRepository = new LimpezaRepository();
+List<Limpeza> limpezas = limpezaRepository.CarregarLimpezas();
 
 ClienteService gerenciadorClientes = new ClienteService();
 LimpezaService gerenciadorLimpezas = new LimpezaService();
@@ -15,10 +16,14 @@ LimpezaService gerenciadorLimpezas = new LimpezaService();
 MenuService menu = new MenuService();
 ConsoleUI consoleUI = new ConsoleUI();
 
-while (true)
+bool continuar = true;
+
+while (continuar)
 {
     Console.Clear();
     consoleUI.MostrarMenu();
-    menu.Exibir(clientes, limpezas);
+    continuar = menu.Exibir(clientes, limpezas);
 }
+
+
 

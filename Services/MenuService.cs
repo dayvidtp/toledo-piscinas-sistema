@@ -10,8 +10,9 @@ namespace toledo_piscinas_sistema.Services
         ClienteService clienteService = new ClienteService();
         LimpezaService limpezaService = new LimpezaService();
         ClienteRepository clienteRepository = new ClienteRepository();
+        LimpezaRepository limpezaRepository = new LimpezaRepository();
 
-        public void Exibir(List<Cliente> clientes, List<Limpeza> limpezas)
+        public bool Exibir(List<Cliente> clientes, List<Limpeza> limpezas)
         {
             //Validação do ReadLine();
             if (!int.TryParse(Console.ReadLine(), out int opcao))
@@ -19,46 +20,57 @@ namespace toledo_piscinas_sistema.Services
                 Console.WriteLine("Digite um número válido!");
                 Thread.Sleep(1000);
                 Console.Clear();
-                return;
+                return true;
             }
+
 
             switch (opcao)
             {
-                case 1:
+                case 1: // Adicionar Cliente
                     var dadosCliente = consoleUI.ObterDadosCliente();
 
                     Cliente cliente = clienteService.CriarCliente(dadosCliente.nome, dadosCliente.telefone);
 
                     clienteService.AdicionarCliente(clientes, cliente);
+
                     clienteRepository.SalvarClientes(clientes);
                     Console.WriteLine("Cliente Adicionado com Sucesso!");
                     Thread.Sleep(1500);
-                    break;
-                case 2:
+                    return true;
+                case 2: // Listar Clientes
                     consoleUI.MostrarClientes(clientes);
                     Console.WriteLine("Pressione Enter para Retornar ao Menu...");
                     Console.ReadLine();
-                    break;
-                case 3:
+                    return true;
+                case 3: // Registrar Limpeza
                     consoleUI.MostrarClientes(clientes);
                     var dadosLimpeza = consoleUI.ObterDadosLimpeza(clientes);
 
                     Limpeza limpeza = limpezaService.CriarLimpeza(DateTime.Now, dadosLimpeza.descricao, dadosLimpeza.cliente);
 
                     limpezaService.RegistrarLimpeza(limpezas, limpeza);
-                    break;
-                case 4:
+
+                    limpezaRepository.SalvarLimpezas(limpezas);
+                    Console.WriteLine("Limpeza Registrada com Sucesso!");
+                    Thread.Sleep(1500);
+                    return true;
+                case 4: // Listar Limpezas
                     consoleUI.MostrarLimpezas(limpezas);
-                    break;
+                    Console.WriteLine("Pressione Enter para Retornar ao Menu...");
+                    Console.ReadLine();
+                    return true;
                 case 0:
                     Console.WriteLine("Saindo...");
-                    break;
+                    Thread.Sleep(500);
+                    return false;
                 default:
                     Console.WriteLine("Número Inválido");
-                    break;
+                    Thread.Sleep(1000);
+                    return true;
             }
-            
-
         }
+
+
     }
 }
+
