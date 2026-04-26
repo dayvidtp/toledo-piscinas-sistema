@@ -99,5 +99,27 @@ namespace toledo_piscinas_sistema.UI
                 Console.WriteLine($"Cliente: {limpeza.Cliente.Nome} | Data: {limpeza.Data:dd/MM/yyyy HH:mm} | {limpeza.Descricao}");
             }
         }
+
+        public string OpcaoDeDeletarLimpezas()
+        {
+            Console.WriteLine("Deseja deletar as limpezas do cliente deletado? (S/N)");
+            string resposta = Console.ReadLine().ToUpper();
+            if (resposta == "S")
+            {
+                Console.WriteLine("Limpezas deletadas com Sucesso!");
+                Thread.Sleep(1500);
+            }
+            else if (resposta == "N")
+            {
+                Console.WriteLine("Limpezas mantidas.");
+                Thread.Sleep(1500);
+            }
+            else
+            {
+                Console.WriteLine("Resposta inválida. Limpezas mantidas por padrão.");
+                Thread.Sleep(1500);
+            }
+            return resposta;
+        }
     }
 }

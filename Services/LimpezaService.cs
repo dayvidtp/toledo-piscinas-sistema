@@ -13,5 +13,18 @@ namespace toledo_piscinas_sistema.Services
         {
             limpezas.Add(novaLimpeza);
         }
+
+        public List<Limpeza> ObterLimpezasPorCliente(List<Limpeza> limpezas, Cliente cliente)
+        {
+            return limpezas.Where(l => l.Cliente == cliente).ToList();
+        }
+
+        public void DeletarLimpezasPorCliente(List<Limpeza> limpezas, List<Limpeza> dadosLimpezaDoCliente)
+            {
+            foreach (var limpeza in dadosLimpezaDoCliente)
+            {
+                limpezas.Remove(limpeza);
+            }
+        }
     }
 }

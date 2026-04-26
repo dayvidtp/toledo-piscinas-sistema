@@ -63,9 +63,19 @@ namespace toledo_piscinas_sistema.Services
                     consoleUI.MostrarClientes(clientes);
 
                     var dadosClienteDeletar = consoleUI.ObterClienteParaDeletar(clientes);
+                    var dadosLimpezaDoCliente = limpezaService.ObterLimpezasPorCliente(limpezas, dadosClienteDeletar.cliente);
 
                     clienteService.DeletarCliente(clientes, dadosClienteDeletar.cliente);
+
+                    // Verificar se o cliente possui limpezas associadas e perguntar se deseja deletar as limpezas também
+                    string resposta = consoleUI.OpcaoDeDeletarLimpezas();
+                    if(resposta.ToUpper() == "S")
+                    {
+                        limpezaService.DeletarLimpezasPorCliente(limpezas, dadosLimpezaDoCliente);
+                    }
+
                     clienteRepository.SalvarClientes(clientes);
+                    limpezaRepository.SalvarLimpezas(limpezas);
 
                     Console.WriteLine("Cliente Deletado com Sucesso!");
                     Thread.Sleep(1500);
