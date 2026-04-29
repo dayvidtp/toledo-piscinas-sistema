@@ -29,11 +29,40 @@ namespace toledo_piscinas_sistema.UI
 
         public (string nome, string telefone) ObterDadosCliente()
         {
-            Console.Write("Digite o nome do Cliente: ");
-            string nome = Console.ReadLine();
+            string nome;
+            do
+            {
+                Console.Write("Digite o nome do Cliente: ");
+                nome = Console.ReadLine();
 
-            Console.Write("Digite o Telefone: ");
-            string telefone = (Console.ReadLine());
+                if (string.IsNullOrWhiteSpace(nome))
+                {
+                    Console.WriteLine("O nome do cliente não pode ser vazio. Por favor, tente novamente.");
+                }
+
+            } while (string.IsNullOrWhiteSpace(nome));
+
+            string telefone;
+            do
+            {
+                Console.Write("Digite o Telefone: ");
+                telefone = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(telefone))
+                {
+                    Console.WriteLine("O telefone do cliente não pode ser vazio. Por favor, tente novamente.");
+                }
+
+            } while (string.IsNullOrWhiteSpace(telefone));
+
+            // Remove caracteres não numéricos do telefone
+            telefone = new string(telefone.Where(char.IsDigit).ToArray());
+
+            if (telefone.Length < 10)
+            {
+                Console.WriteLine("O telefone deve conter no mínimo 10 dígitos. Por favor, tente novamente.");
+                return ObterDadosCliente(); // Chama o método novamente para obter dados válidos
+            }
 
             return (nome, telefone);
         }
@@ -67,10 +96,18 @@ namespace toledo_piscinas_sistema.UI
 
         public (string descricao, Cliente cliente) ObterDadosLimpeza(List<Cliente> clientes)
         {
-            Console.Write("Escolha o cliente pelo número: ");
-            int escolha = int.Parse(Console.ReadLine());
+            if (clientes.Count == 0)
+            {
+                Console.WriteLine("Nenhum cliente cadastrado. Por favor, cadastre um cliente antes de registrar uma limpeza.");
+                Thread.Sleep(3000);
+                return (null, null); // Corrigido: retorna tupla nula para manter a assinatura correta                
+            }
 
-            Cliente clienteSelecionado = clientes[escolha - 1];
+            int escolha;
+            Console.Write("Escolha o cliente pelo número: ");
+            escolha = int.Parse(Console.ReadLine());
+
+            Cliente clienteSelecionado;
 
             if (escolha > 0 && escolha <= clientes.Count)
             {
@@ -79,10 +116,19 @@ namespace toledo_piscinas_sistema.UI
             else
             {
                 Console.WriteLine("Cliente inválido!");
+                return ObterDadosLimpeza(clientes); // Chama o método novamente para obter dados válidos
             }
 
-            Console.Write("Descrição da limpeza: ");
-            string descricao = Console.ReadLine();
+            string descricao;
+            do
+            {
+                Console.Write("Descrição da limpeza: ");
+                descricao = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(descricao))
+                {
+                    Console.WriteLine("A descrição da limpeza não pode ser vazia. Por favor, tente novamente.");
+                }
+            } while (string.IsNullOrWhiteSpace(descricao));
 
             return (descricao, clienteSelecionado);
         }

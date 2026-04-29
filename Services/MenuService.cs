@@ -44,7 +44,12 @@ namespace toledo_piscinas_sistema.Services
                     return true;
                 case 3: // Registrar Limpeza
                     consoleUI.MostrarClientes(clientes);
+
                     var dadosLimpeza = consoleUI.ObterDadosLimpeza(clientes);
+                    if (dadosLimpeza.cliente == null)
+                    {
+                        return true;
+                    }
 
                     Limpeza limpeza = limpezaService.CriarLimpeza(DateTime.Now, dadosLimpeza.descricao, dadosLimpeza.cliente);
 
@@ -63,15 +68,29 @@ namespace toledo_piscinas_sistema.Services
                     consoleUI.MostrarClientes(clientes);
 
                     var dadosClienteDeletar = consoleUI.ObterClienteParaDeletar(clientes);
+                    if (dadosClienteDeletar.cliente == null)
+                    {
+                        Console.WriteLine("Cliente não encontrado. Retornando ao menu...");
+                        Thread.Sleep(1500);
+                        return true;
+                    }
                     var dadosLimpezaDoCliente = limpezaService.ObterLimpezasPorCliente(limpezas, dadosClienteDeletar.cliente);
 
                     clienteService.DeletarCliente(clientes, dadosClienteDeletar.cliente);
 
                     // Verificar se o cliente possui limpezas associadas e perguntar se deseja deletar as limpezas também
                     string resposta = consoleUI.OpcaoDeDeletarLimpezas();
-                    if(resposta.ToUpper() == "S")
+                    if (resposta.ToUpper() == "S" && dadosLimpezaDoCliente.Count > 0)
                     {
                         limpezaService.DeletarLimpezasPorCliente(limpezas, dadosLimpezaDoCliente);
+                    } else if (resposta.ToUpper() == "N" && dadosLimpezaDoCliente.Count > 0)
+                    {
+                        Console.WriteLine("Limpezas associadas ao cliente não foram deletadas.");
+                        Thread.Sleep(1500);
+                    } else if (dadosLimpezaDoCliente.Count == 0)
+                    {
+                        Console.WriteLine("Cliente não possui limpezas associadas.");
+                        Thread.Sleep(1500);
                     }
 
                     clienteRepository.SalvarClientes(clientes);
