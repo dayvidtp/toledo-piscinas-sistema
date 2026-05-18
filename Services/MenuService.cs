@@ -12,6 +12,12 @@ namespace toledo_piscinas_sistema.Services
         ClienteRepository clienteRepository = new ClienteRepository();
         LimpezaRepository limpezaRepository = new LimpezaRepository();
 
+        public MenuService(ClienteService clienteService, LimpezaService limpezaService)
+        {
+            clienteService = clienteService;
+            limpezaService = limpezaService;
+        }
+
         public bool Exibir(List<Cliente> clientes, List<Limpeza> limpezas)
         {
             //Validação do ReadLine();
@@ -46,6 +52,7 @@ namespace toledo_piscinas_sistema.Services
                     consoleUI.MostrarClientes(clientes);
 
                     var dadosLimpeza = consoleUI.ObterDadosLimpeza(clientes);
+
                     if (dadosLimpeza.cliente == null)
                     {
                         return true;

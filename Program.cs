@@ -10,10 +10,7 @@ List<Cliente> clientes = clienteRepository.CarregarClientes();
 LimpezaRepository limpezaRepository = new LimpezaRepository();
 List<Limpeza> limpezas = limpezaRepository.CarregarLimpezas();
 
-ClienteService gerenciadorClientes = new ClienteService();
-LimpezaService gerenciadorLimpezas = new LimpezaService();
-
-MenuService menu = new MenuService();
+MenuService menu = new(new ClienteService(), new LimpezaService());
 ConsoleUI consoleUI = new ConsoleUI();
 
 bool continuar = true;

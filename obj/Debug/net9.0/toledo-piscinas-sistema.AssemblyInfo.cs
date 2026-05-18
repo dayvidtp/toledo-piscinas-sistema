@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("toledo-piscinas-sistema")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8284313b210177f7fee4888e77d5aaeb0c8906d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+912a798560303f629d291a9aa92c6f653ddb5e66")]
 [assembly: System.Reflection.AssemblyProductAttribute("toledo-piscinas-sistema")]
 [assembly: System.Reflection.AssemblyTitleAttribute("toledo-piscinas-sistema")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
